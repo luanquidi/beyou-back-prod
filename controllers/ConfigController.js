@@ -75,7 +75,7 @@ const actualizarConfig = async (req, res) => {
             if (req.files) {
                 const files = req.files;
                 let imgPath = files.logo.path;
-                let splitPatch = process.env.PATH_IMAGES || '\\';
+                let splitPatch = '/';
                 const nombreImg = imgPath.split(splitPatch)[2];
 
 

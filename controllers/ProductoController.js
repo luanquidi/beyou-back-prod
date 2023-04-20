@@ -22,7 +22,7 @@ const registroProducto = async (req, res) => {
             const data = req.body;
             const files = req.files;
             let imgPath = files.portada.path;
-            let splitPatch = process.env.PATH_IMAGES || '\\';
+            let splitPatch = '/';
             const nombreImg = imgPath.split(splitPatch)[2];
 
             data.portada = nombreImg;
@@ -129,7 +129,7 @@ const actualizarProducto = async (req, res) => {
             if (req.files) {
                 const files = req.files;
                 let imgPath = files.portada.path;
-                let splitPatch = process.env.PATH_IMAGES || '\\';
+                let splitPatch = '/';
                 const nombreImg = imgPath.split(splitPatch)[2];
 
                 const reg = await producto.findByIdAndUpdate({ _id: id }, {
@@ -334,7 +334,7 @@ const agregarImagenGaleria = async (req, res) => {
 
             const files = req.files;
             let imgPath = files.imagen.path;
-            let splitPatch = process.env.PATH_IMAGES || '\\';
+            let splitPatch = '/';
             const nombreImg = imgPath.split(splitPatch)[2];
 
 

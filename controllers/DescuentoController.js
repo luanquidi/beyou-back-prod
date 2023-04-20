@@ -12,7 +12,7 @@ const registrarDescuento = async (req, res) => {
             const data = req.body;
             const files = req.files;
             let imgPath = files.banner.path;
-            let splitPatch = process.env.PATH_IMAGES || '\\';
+            let splitPatch = '/';
             const nombreImg = imgPath.split(splitPatch)[2];
 
             data.banner = nombreImg;
@@ -102,7 +102,7 @@ const actualizarDescuento = async (req, res) => {
             if (req.files) {
                 const files = req.files;
                 let imgPath = files.banner.path;
-                let splitPatch = process.env.PATH_IMAGES || '\\';
+                let splitPatch = '/';
                 const nombreImg = imgPath.split(splitPatch)[2];
 
 

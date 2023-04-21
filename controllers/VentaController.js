@@ -162,9 +162,9 @@ const generarVenta = async (req, res) => {
         items: itemsProductos,
         binary_mode: true,
         back_urls: {
-            "success": `${process.env.URL_FEEDBACK}/api/feedback`,
-            "failure": `${process.env.URL_FEEDBACK}/api/feedback`,
-            "pending": `${process.env.URL_FEEDBACK}/api/feedback`
+            "success": `https://api.beyoulovers.com/api/feedback`,
+            "failure": `https://api.beyoulovers.com/api/feedback`,
+            "pending": `https://api.beyoulovers.com/api/feedback`
         },
         auto_return: 'approved',
         payment_methods: {
@@ -221,7 +221,7 @@ const feedbackUrl = async (req, res) => {
 
             const existeVenta = await venta.find({ idOrdenMercadoPago: req.query.payment_id });
             if (existeVenta.length > 0) {
-                res.redirect(`${process.env.URL_TIENDA}/#/tienda/detalle-compra/${req.query.payment_id}`)
+                res.redirect(`https://beyoulovers.com/#/tienda/detalle-compra/${req.query.payment_id}`)
             } else {
 
                 const ultimaVenta = await venta.find().sort({ createdAt: -1 });
@@ -264,12 +264,12 @@ const feedbackUrl = async (req, res) => {
 
                 await enviarCorreoCompra(ventaCreada._id);
 
-                res.redirect(`${process.env.URL_TIENDA}/#/tienda/detalle-compra/${req.query.payment_id}`)
+                res.redirect(`https://beyoulovers.com/#/tienda/detalle-compra/${req.query.payment_id}`)
             }
         }
 
     } else {
-        res.redirect(`${process.env.URL_TIENDA}/#/tienda/carrito`)
+        res.redirect(`https://beyoulovers.com/#/tienda/carrito`)
     }
 
 
@@ -354,7 +354,7 @@ const enviarCorreoCompraCliente = async (req, res) => {
         var mailOptions = {
             from: 'lquinones965@gmail.com',
             to: ventaDetalle.cliente.email,
-            subject: 'Gracias por tu compra, Mi Tienda',
+            subject: 'Gracias por tu compra, Be You',
             html: htmlToSend
         };
         // res.status(200).send({ data: true });
@@ -414,7 +414,7 @@ const enviarCorreoCompra = async (idVenta) => {
         var mailOptions = {
             from: 'lquinones965@gmail.com',
             to: ventaDetalle.cliente.email,
-            subject: 'Gracias por tu compra, Mi Tienda',
+            subject: 'Gracias por tu compra, Be You',
             html: htmlToSend
         };
         // res.status(200).send({ data: true });

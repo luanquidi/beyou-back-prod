@@ -476,7 +476,7 @@ const listarProductosMasVendidos = async (req, res) => {
     res.status(200).send({
         datos: listadoProductos,
         resultadoExitoso: true,
-        mensaje: 'Operación existosa!'
+        mensaje: 'Operación existosa s!'
     });
 
 }
